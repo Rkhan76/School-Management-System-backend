@@ -28,7 +28,7 @@ const adminProfileSchema = new mongoose.Schema({
     type: String,
     require: true,
   }
-})
+},{ timestamps: true})
 
 
 const adminProfile = mongoose.model('adminProfile', adminProfileSchema)

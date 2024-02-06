@@ -33,7 +33,7 @@ const teacherProfileSchema = new mongoose.Schema({
     require: true,
   }
 
-})
+},{ timestamps: true })
 
 const teacherProfile = mongoose.model('teacherProfile', teacherProfileSchema)
 
