@@ -3,35 +3,36 @@ const bodyParser = require('body-parser')
 const cors = require('cors') // Import CORS middleware
 const { connectToMongoDB } = require('./connection')
 
+const studentRoute = require('./routes/student/studentProfile')
+
+
 const app = express()
-const port = 3000
+const port = 8000
 
 // Use CORS middleware to allow requests from client origin
 app.use(cors())
 
+
+
+connectToMongoDB('mongodb://127.0.0.1:27017/School-Management-System').then(() =>
+  console.log('MongoDB is connected')
+)
+
+
+
 // Parse JSON bodies
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
 
-connectToMongoDB('mongodb://127.0.0.1:27017/School_Management_System').then(
-  () => {
-    console.log('MongoDB connected')
-  }
-)
+
+app.use('/student', studentRoute)
+
 
 app.get('/', (req, res) => {
   return res.send('<h1>Hello</h1>')
 })
 
-app.post('/update-studentprofile', (req, res) => {
-  // Access JSON data from req.body
-  const { name, email, rollNumber } = req.body
 
-  // Handle the form data (e.g., save to database)
-  console.log('Received form data:', { name, email, rollNumber })
-
-  // Respond with JSON data
-  return res.json({ message: 'Form data received' })
-})
 
 app.listen(port, () => {
   console.log(`Server is started on port ${port}`)
