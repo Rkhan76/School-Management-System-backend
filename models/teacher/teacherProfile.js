@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const teacherProfileSchema = new mongoose.Schema({
-  _id: {
+  teacherId: {
     type: String,
     require: true,
     unique: true,
@@ -14,7 +14,10 @@ const teacherProfileSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  gender: ['Male', 'Female', 'Other'],
+  gender:{
+    type: String,
+    require: true,
+  },
   email:{
     type: String,
     require: true,
@@ -22,7 +25,6 @@ const teacherProfileSchema = new mongoose.Schema({
   },
   classTeacher: {
     type: String,
-    require: false,
   },
   phoneNumber:{
     type: Number,
@@ -35,6 +37,6 @@ const teacherProfileSchema = new mongoose.Schema({
 
 },{ timestamps: true })
 
-const teacherProfile = mongoose.model('teacherProfile', teacherProfileSchema)
+const TeacherProfile = mongoose.model('teacherProfile', teacherProfileSchema)
 
-module.exports = teacherProfile
+module.exports = TeacherProfile
