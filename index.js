@@ -5,6 +5,8 @@ const { connectToMongoDB } = require('./connection')
 
 const studentRoute = require('./routes/student/studentProfile')
 const teacherProfile = require('./routes/teacher/teacherProfile')
+const user = require('./routes/user/user')
+
 
 
 const app = express()
@@ -28,6 +30,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 app.use('/student', studentRoute)
 app.use('/teacher',teacherProfile)
+app.use('/', user)
 
 
 app.get('/', (req, res) => {
