@@ -1,6 +1,10 @@
 const bcrypt = require('bcrypt')
 const User = require('../../models/user/user')
 const { setUser } = require('../../services/auth')
+const StudentProfile = require('../../models/student/studentProfile')
+const TeacherProfile = require('../../models/teacher/teacherProfile')
+const ParentsProfile = require('../../models/parents/parentsProfile')
+const AdminProfile = require('../../models/admin/adminProfile')
 
 const secretKey = '94124'
 
@@ -23,6 +27,44 @@ async function handleUserSignUp(req, res) {
       email,
       password: hashedPassword,
     })
+
+    switch (role) {
+      case 'student':
+           const studentProfileDetail = await StudentProfile.create({
+             firstName: null,
+             lastName: null,
+             gender: null,
+             fatherName: null,
+             motherName: null,
+             dateOfBirth: null,
+             religion: null,
+             fatherOccupation: null,
+             email: email,
+             admissionDate: null,
+             StudentClass: null,
+             section: null,
+             house: null,
+             rollNo: null,
+             address: null,
+             phoneNumber: null,
+           })
+        break
+      case 'teacher':
+        const teacherProfileDetail = await StudentProfile.create({
+          email,
+        })
+        break
+      case 'parents':
+        const parentsProfileDetail = await StudentProfile.create({
+          email,
+        })
+        break
+      case 'admin':
+        const adminProfileDetail = await StudentProfile.create({
+          email,
+        })
+        break
+    }
 
     return res
       .status(201)
@@ -52,7 +94,6 @@ async function handleSignIn(req, res) {
     if (passwordMatch) {
       const userPayload = {
         email: userDetail.email,
-        // Add more properties if needed
       }
 
       const token = setUser(userPayload)
@@ -60,8 +101,7 @@ async function handleSignIn(req, res) {
 
       const role = userDetail.role
 
-      // Set the cookie and send the response
-      res.cookie('uid', token, { httpOnly: true })
+      res.cookie('uid', token)
       return res.status(200).json({ message: 'Login successful', role })
     } else {
       return res.status(401).json({ message: 'Invalid password' })

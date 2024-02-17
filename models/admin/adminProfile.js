@@ -1,11 +1,6 @@
 const mongoose = require('mongoose')
 
 const adminProfileSchema = new mongoose.Schema({
-  _id: {
-    type: String,
-    require: true,
-    unique: true,
-  },
   firstName: {
     type: String,
     require: true,
@@ -31,6 +26,6 @@ const adminProfileSchema = new mongoose.Schema({
 },{ timestamps: true})
 
 
-const adminProfile = mongoose.model('adminProfile', adminProfileSchema)
+const AdminProfile = mongoose.model('adminProfile', adminProfileSchema)
 
-module.exports = adminProfile
+module.exports = AdminProfile

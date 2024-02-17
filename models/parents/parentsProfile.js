@@ -37,6 +37,6 @@ const parentsProfileSchema = new mongoose.Schema({
   }
 }, { timestamps: true })
 
-const parentsProfile = mongoose.model('parentsProfile',parentsProfileSchema)
+const ParentsProfile = mongoose.model('parentsProfile',parentsProfileSchema)
 
-module.exports = parentsProfile
+module.exports = ParentsProfile
