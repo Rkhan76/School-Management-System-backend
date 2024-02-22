@@ -1,4 +1,5 @@
 const StudentProfile = require('../../models/student/studentProfile')
+const { classes } = require('../class')
 
 async function handleStudentProfile(req, res) {
   const body = req.body

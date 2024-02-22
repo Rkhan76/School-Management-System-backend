@@ -68,8 +68,7 @@ const studentProfileSchema = new mongoose.Schema(
       
     },
     phoneNumber: {
-      type: String,
-      
+      type: String, 
     },
   },
   { timestamps: true }
