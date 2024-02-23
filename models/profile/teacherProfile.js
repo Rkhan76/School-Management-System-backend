@@ -3,20 +3,18 @@ const mongoose = require('mongoose')
 const teacherProfileSchema = new mongoose.Schema({
   teacherId: {
     type: String,
-    require: true,
-    unique: true,
   },
   firstName: {
     type: String,
-    require: true,
+    
   },
   lastName: {
     type: String,
-    require: true,
+    
   },
   gender:{
     type: String,
-    require: true,
+    
   },
   email:{
     type: String,
@@ -27,12 +25,12 @@ const teacherProfileSchema = new mongoose.Schema({
     type: String,
   },
   phoneNumber:{
-    type: Number,
-    require: true,
+    type: String,
+    
   },
   address:{
     type: String,
-    require: true,
+   
   }
 
 },{ timestamps: true })

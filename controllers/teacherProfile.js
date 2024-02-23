@@ -16,34 +16,38 @@ async function handleTeacherProfilePost(req, res) {
       address,
     } = body
 
-    const profileDetail = await TeacherProfile.create({
-      teacherId,
-      firstName,
-      lastName,
-      gender,
-      email,
-      classTeacher,
-      phoneNumber,
-      address,
-    })
+  
 
-    res
+    const profileDetail = await TeacherProfile.findOneAndUpdate(
+      { email: email },
+      {
+        teacherId,
+        firstName,
+        lastName,
+        gender,
+        classTeacher,
+        phoneNumber,
+        address,
+      },
+      // { upsert: true, new: true } // Options to create a new profile if it doesn't exist
+    )
+
+    return res
       .status(201)
       .json({ message: 'Teacher profile created successfully', profileDetail })
   } catch (error) {
-    console.log('Error creating student profile: ', error)
-    res.status(500).json({ error: 'Internal server error' })
+    console.error('Error creating teacher profile: ', error)
+    return res.status(500).json({ error: 'Internal server error' })
   }
 }
 
 async function handleTeacherProfileGet(req, res) {
   try {
     const profileDetail = await TeacherProfile.find({})
-    console.log(profileDetail)
-    res.json(profileDetail)
+    return res.json(profileDetail)
   } catch (error) {
     console.error('Error fetching teacher profiles: ', error)
-    res.status(500).json({ error: 'Internal server error' })
+    return res.status(500).json({ error: 'Internal server error' })
   }
 }
 
