@@ -3,9 +3,9 @@ const bodyParser = require('body-parser')
 const cors = require('cors') // Import CORS middleware
 const { connectToMongoDB } = require('./connection')
 
-const studentRoute = require('./routes/student/studentProfile')
-const teacherProfile = require('./routes/teacher/teacherProfile')
-const user = require('./routes/user/user')
+const studentRoute = require('./routes/studentProfile')
+const teacherProfile = require('./routes/teacherProfile')
+const user = require('./routes/user')
 
 
 

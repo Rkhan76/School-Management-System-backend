@@ -1,4 +1,4 @@
-const TeacherProfile = require('../../models/teacher/teacherProfile')
+const TeacherProfile = require('../models/profile/teacherProfile')
 
 async function handleTeacherProfilePost(req, res) {
   const body = req.body
@@ -39,7 +39,7 @@ async function handleTeacherProfilePost(req, res) {
 async function handleTeacherProfileGet(req, res) {
   try {
     const profileDetail = await TeacherProfile.find({})
-    console.log(profileDetail);
+    console.log(profileDetail)
     res.json(profileDetail)
   } catch (error) {
     console.error('Error fetching teacher profiles: ', error)
@@ -51,4 +51,3 @@ module.exports = {
   handleTeacherProfilePost,
   handleTeacherProfileGet,
 }
-

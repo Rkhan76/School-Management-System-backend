@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 
 const attendanceSchema = new mongoose.Schema({
-    Month: Number,
+    year: Number,
+    month: Number,
     studentId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "StudentProfile"

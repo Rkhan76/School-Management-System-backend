@@ -4,7 +4,6 @@ const studentProfileSchema = new mongoose.Schema(
   {
     studentId: {
       type: String,
-      unique: true,
     },
     firstName: {
       type: String,
@@ -47,8 +46,8 @@ const studentProfileSchema = new mongoose.Schema(
       type: Date,
       
     },
-    StudentClass: {
-      type: String,
+    studentClass: {
+      type: Number,
       
     },
     section: {

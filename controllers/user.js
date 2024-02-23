@@ -1,10 +1,10 @@
 const bcrypt = require('bcrypt')
-const User = require('../../models/user/user')
-const { setUser } = require('../../services/auth')
-const StudentProfile = require('../../models/student/studentProfile')
-const TeacherProfile = require('../../models/teacher/teacherProfile')
-const ParentsProfile = require('../../models/parents/parentsProfile')
-const AdminProfile = require('../../models/admin/adminProfile')
+const User = require('../models/user')
+const { setUser } = require('../services/auth')
+const StudentProfile = require('../models/profile/studentProfile')
+const TeacherProfile = require('../models/profile/teacherProfile')
+const ParentsProfile = require('../models/profile/parentsProfile')
+const AdminProfile = require('../models/profile/adminProfile')
 
 const secretKey = '94124'
 
@@ -30,24 +30,24 @@ async function handleUserSignUp(req, res) {
 
     switch (role) {
       case 'student':
-           const studentProfileDetail = await StudentProfile.create({
-             firstName: null,
-             lastName: null,
-             gender: null,
-             fatherName: null,
-             motherName: null,
-             dateOfBirth: null,
-             religion: null,
-             fatherOccupation: null,
-             email: email,
-             admissionDate: null,
-             StudentClass: null,
-             section: null,
-             house: null,
-             rollNo: null,
-             address: null,
-             phoneNumber: null,
-           })
+        const studentProfileDetail = await StudentProfile.create({
+          firstName: null,
+          lastName: null,
+          gender: null,
+          fatherName: null,
+          motherName: null,
+          dateOfBirth: null,
+          religion: null,
+          fatherOccupation: null,
+          email: email,
+          admissionDate: null,
+          StudentClass: null,
+          section: null,
+          house: null,
+          rollNo: null,
+          address: null,
+          phoneNumber: null,
+        })
         break
       case 'teacher':
         const teacherProfileDetail = await StudentProfile.create({
