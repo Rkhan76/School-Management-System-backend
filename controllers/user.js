@@ -111,7 +111,7 @@ async function handleSignIn(req, res) {
       const role = userDetail.role
 
       res.cookie('uid', token)
-      return res.status(200).json({ message: 'Login successful', role, email })
+      return res.status(200).json({ message: 'Login successful', role, email, token })
     } else {
       return res.status(401).json({ message: 'Invalid password' })
     }
