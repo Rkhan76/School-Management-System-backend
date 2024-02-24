@@ -28,9 +28,10 @@ async function handleUserSignUp(req, res) {
       password: hashedPassword,
     })
 
+   
     switch (role) {
       case 'student':
-        const studentProfileDetail = await StudentProfile.create({
+        await StudentProfile.create({
           firstName: null,
           lastName: null,
           gender: null,
@@ -50,17 +51,24 @@ async function handleUserSignUp(req, res) {
         })
         break
       case 'teacher':
-        const teacherProfileDetail = await StudentProfile.create({
-          email,
+        await TeacherProfile.create({
+          teacherId: null,
+          firstName: null,
+          lastName: null,
+          gender: null,
+          email: email,
+          classTeacher: null,
+          phoneNumber: null,
+          address: null,
         })
         break
       case 'parents':
-        const parentsProfileDetail = await StudentProfile.create({
+        await ParentsProfile.create({
           email,
         })
         break
       case 'admin':
-        const adminProfileDetail = await StudentProfile.create({
+        await AdminProfile.create({
           email,
         })
         break
@@ -77,6 +85,7 @@ async function handleUserSignUp(req, res) {
     return res.status(500).json({ error: 'Internal server error' })
   }
 }
+
 
 async function handleSignIn(req, res) {
   try {
@@ -102,7 +111,7 @@ async function handleSignIn(req, res) {
       const role = userDetail.role
 
       res.cookie('uid', token)
-      return res.status(200).json({ message: 'Login successful', role })
+      return res.status(200).json({ message: 'Login successful', role, email, token })
     } else {
       return res.status(401).json({ message: 'Invalid password' })
     }
