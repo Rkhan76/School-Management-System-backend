@@ -29,7 +29,7 @@ async function handleTeacherProfilePost(req, res) {
         phoneNumber,
         address,
       },
-      // { upsert: true, new: true } // Options to create a new profile if it doesn't exist
+      { upsert: true, new: true } // Options to create a new profile if it doesn't exist
     )
 
     return res

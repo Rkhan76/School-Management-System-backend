@@ -8,7 +8,7 @@ async function handleTeacherAttendanceGet(req, res){
 
 async function handleTeacherAttendancePost(req, res) {
   const body = req.body
-  if (!body) return res.status(400).json({ error: 'Input data is not right' })
+  if (!body) return res.status(400).json({ error: 'Please Input data' })
 
   const { year, month, teacherId, attendanceSchema } = body
 
