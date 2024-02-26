@@ -31,9 +31,8 @@ const teacherProfileSchema = new mongoose.Schema({
   address:{
     type: String,
    
-  }
-
-},{ timestamps: true })
+  },
+  },{ timestamps: true })
 
 const TeacherProfile = mongoose.model('teacherProfile', teacherProfileSchema)
 
