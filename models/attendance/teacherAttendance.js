@@ -10,6 +10,6 @@ const teacherAttendanceSchema = new mongoose.Schema({
   attendanceSchema: [],
 })
 
-const TeacherAttendance = mongoose.model('Attendance', teacherAttendanceSchema)
+const TeacherAttendance = mongoose.model('teacherAttendance', teacherAttendanceSchema)
 
 module.exports = TeacherAttendance
