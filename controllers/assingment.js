@@ -35,7 +35,7 @@ async function handleViewAssignments(req, res) {
   const body = req.body
   if (!body) return res.status(400).json({ error: 'Please input data' })
 
-  const { email, className } = body
+  const { email, className} = body
   if (!(email || className)) {
     return res
       .status(400)

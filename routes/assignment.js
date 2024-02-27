@@ -9,7 +9,7 @@ const router = express.Router()
 
 router.post('/', handleAssignAssignmentToStudents)
 router.get('/', handleViewAssignments)
-// router.get('/submit', handleAssignmentSubmission)
+// router.post('/submit', handleAssignmentSubmission)
 
 
 module.exports = router
