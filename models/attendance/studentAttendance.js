@@ -1,17 +1,30 @@
 const mongoose = require('mongoose')
 
-const attendanceSchema = new mongoose.Schema({
-    year: Number,
-    month: Number,
+const studentAttendanceSchema = new mongoose.Schema({
+    year: {
+      type: Number,
+      require: true
+    },
+    month: {
+      type: Number,
+      require: true
+    },
+    className:{
+      type: Number,
+      require: true,
+    },
     studentId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "StudentProfile"
     },
-    attendanceSchema: []
+    attendance: []
     
-  });
+  },{ timestamps: true});
 
 
-const Attendance = mongoose.model('Attendance', attendanceSchema)
+const StudentAttendance = mongoose.model(
+  'studentAttendance',
+  studentAttendanceSchema
+)
 
-module.exports = Attendance;
+module.exports = StudentAttendance

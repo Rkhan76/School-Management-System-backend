@@ -6,7 +6,7 @@ const { connectToMongoDB } = require('./connection')
 const studentRoute = require('./routes/studentProfile')
 const teacherProfile = require('./routes/teacherProfile')
 const user = require('./routes/user')
-const teacherAttendance = require('./routes/attendance/teacherAttendance')
+const attendance = require('./routes/attendance/attendance')
 const assignment = require('./routes/assignment')
 
 
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 app.use('/student', studentRoute)
 app.use('/teacher',teacherProfile)
-app.use('/attendance',teacherAttendance)
+app.use('/attendance',attendance)
 app.use('/assignment', assignment)
 app.use('/', user)
 
