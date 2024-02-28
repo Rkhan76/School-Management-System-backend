@@ -107,7 +107,7 @@ async function handleSignIn(req, res) {
       }
 
       const token = setUser(userPayload)
-      console.log(token)
+      
 
       const role = userDetail.role
 
