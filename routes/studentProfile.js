@@ -1,9 +1,9 @@
 const express = require('express')
-const { handleStudentProfile } = require('../controllers/studentProfile')
+const { handleStudentProfilePost,  } = require('../controllers/studentProfile')
 
 const router = express.Router()
 
-router.post('/profile', handleStudentProfile)
-router.get('/profile', handleStudentProfile)
+router.post('/profile', handleStudentProfilePost)
+// router.get('/profile', handleStudentProfileGet)
 
 module.exports = router

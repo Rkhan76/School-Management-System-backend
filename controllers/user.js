@@ -46,6 +46,7 @@ async function handleUserSignUp(req, res) {
           section: null,
           house: null,
           rollNo: null,
+          session: null,
           address: null,
           phoneNumber: null,
         })

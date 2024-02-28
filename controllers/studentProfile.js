@@ -1,7 +1,7 @@
 const StudentProfile = require('../models/profile/studentProfile')
 const { classes } = require('./class')
 
-async function handleStudentProfile(req, res) {
+async function handleStudentProfilePost(req, res) {
   const body = req.body
   if (!body) return res.status(400).json({ error: 'Data not received' })
 
@@ -43,6 +43,7 @@ async function handleStudentProfile(req, res) {
         section: section,
         house: house,
         rollNo: rollNo,
+        session: session,
         address: address,
         phoneNumber: phoneNumber,
       },
@@ -70,5 +71,5 @@ async function handleStudentProfile(req, res) {
 }
 
 module.exports = {
-  handleStudentProfile,
+  handleStudentProfilePost,
 }
