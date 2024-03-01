@@ -27,6 +27,8 @@ async function handleStudentProfilePost(req, res) {
       phoneNumber,
     } = body
 
+    
+
     const profileDetail = await StudentProfile.findOneAndUpdate(
       { email: email },
       {
@@ -71,41 +73,42 @@ async function handleStudentProfilePost(req, res) {
 }
 
 async function handleStudentProfileGet(req, res) {
-  // Extract token from the Authorization header
-  const token = req.headers.authorization.split(' ')[1]; // Assuming the token is sent in the format 'Bearer <token>'
-  console.log(token);
+  const { authorization, email } = req.headers
 
-  // Extract email from the Email header
-  const email = req.headers.email;
-  console.log(email);
-
-  // Check if email is present
   if (!email) {
     return res.status(400).json({
       success: false,
       message: 'Incomplete Data',
-    });
+    })
   }
 
-  // Fetch student profile based on the email
   try {
-    const studentProfile = await StudentProfile.findOne({ email });
-    console.log(studentProfile);
+    const studentProfile = await StudentProfile.findOne({ email })
 
-    // Return response with the student profile
+    if (!studentProfile) {
+      return res.status(404).json({
+        success: false,
+        message: 'Profile not found',
+      })
+    }
+
+    const { _id, createdAt, updatedAt, __v, ...filteredProfile } =
+      studentProfile.toObject()
+
     return res.status(200).json({
       success: true,
       message: 'Profile found',
-      profile: studentProfile,
-    });
+      profile: filteredProfile,
+    })
   } catch (error) {
-    console.error('Error fetching student profile:', error);
+    console.error('Error fetching student profile:', error)
     return res.status(500).json({
       success: false,
       message: 'Internal server error',
-    });
+    })
   }
 }
+
 
 module.exports = {
   handleStudentProfileGet,
