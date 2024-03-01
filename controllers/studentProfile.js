@@ -4,6 +4,7 @@ const { httpStatusCode } = require('../constant/httpStatusCode')
 
 async function handleStudentProfilePost(req, res) {
   const body = req.body
+  
   if (!body) return res.status(400).json({ error: 'Data not received' })
 
   try {
@@ -24,10 +25,13 @@ async function handleStudentProfilePost(req, res) {
       house,
       rollNo,
       address,
+      session,
       phoneNumber,
     } = body
 
-    
+
+
+
 
     const profileDetail = await StudentProfile.findOneAndUpdate(
       { email: email },

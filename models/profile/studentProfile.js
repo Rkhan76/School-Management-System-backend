@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const studentProfileSchema = new mongoose.Schema(
   {
     studentId: {
-      type: String,
+      type: Date,
+      unique: true,
     },
     firstName: {
       type: String,

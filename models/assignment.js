@@ -31,27 +31,27 @@ const assignmentSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    submission: [
-      {
-        studentId: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'Student',
-        },
-        submission: {
-          type: String,
-          default: null,
-        },
-        submittedAt: {
-          type: Date, // Date type for submission timestamp
-          default: Date.now, // Set the default value to the current timestamp
-        },
-        status: {
-          type: String,
-          enum: ['assigned', 'submitted', 'late', 'graded'],
-          default: 'assigned',
-        },
-      },
-    ],
+    // submission: [
+    //   {
+    //     studentid: {
+    //       type: mongoose.Schema.Types.ObjectId,
+    //       ref: 'Student',
+    //     },
+    //     submission: {
+    //       type: String,
+    //       default: null,
+    //     },
+    //     submittedAt: {
+    //       type: Date, // Date type for submission timestamp
+    //       default: Date.now, // Set the default value to the current timestamp
+    //     },
+    //     status: {
+    //       type: String,
+    //       enum: ['assigned', 'submitted', 'late', 'graded'],
+    //       default: 'assigned',
+    //     },
+    //   },
+    // ],
   },
   { timestamps: true }
 ) // Place the timestamps option here

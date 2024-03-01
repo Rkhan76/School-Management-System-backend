@@ -9,6 +9,7 @@ const AdminProfile = require('../models/profile/adminProfile')
 
 const secretKey = '94124'
 
+
 async function handleUserSignUp(req, res) {
   try {
     const { username, email, password, role, secretKeyInput } = req.body
@@ -29,63 +30,35 @@ async function handleUserSignUp(req, res) {
       password: hashedPassword,
     })
 
-    console.log(role)
-   
-    // switch (role) {
-    //   case 'student':
-    //     await StudentProfile.create({
-    //       firstName: null,
-    //       lastName: null,
-    //       gender: null,
-    //       fatherName: null,
-    //       motherName: null,
-    //       dateOfBirth: null,
-    //       religion: null,
-    //       fatherOccupation: null,
-    //       email: email,
-    //       admissionDate: null,
-    //       StudentClass: null,
-    //       section: null,
-    //       house: null,
-    //       rollNo: null,
-    //       session: null,
-    //       address: null,
-    //       phoneNumber: null,
-    //     })
-    //     console.log('hllo')
-    //     res.status(201).json({message: "student profile created"})
-    //     break
-    //   case 'teacher':
-    //     await TeacherProfile.create({
-    //       teacherId: null,
-    //       firstName: null,
-    //       lastName: null,
-    //       gender: null,
-    //       email: email,
-    //       classTeacher: null,
-    //       phoneNumber: null,
-    //       address: null,
-    //     })
-    //     break
-    //   case 'parents':
-    //     await ParentsProfile.create({
-    //       email,
-    //     })
-    //     break
-    //   case 'admin':
-    //     await AdminProfile.create({
-    //       email,
-    //     })
-    //     break
-    // }
+    if (role === 'student') {
+      console.log(role)
+      await StudentProfile.create({
+        studentId: Date.now(),
+        firstName: '',
+        lastName: '',
+        gender: '',
+        fatherName: '',
+        motherName: '',
+        dateOfBirth: '',
+        religion: '',
+        fatherOccupation: '',
+        email,
+        admissionDate: '',
+        studentClass: '',
+        section: '',
+        house: '',
+        rollNo: '',
+        address: '',
+        session: '',
+        phoneNumber: '',
+      })
+    }
+
     return res
       .status(201)
       .json({ message: 'User signed up successfully', userDetail })
   } catch (error) {
     console.error('Error in user signup:', error)
-    // if (error.code === 11000) {
-    //   return res.status(400).json({ error: 'Email already exists' })
-    // }
     return res.status(500).json({ error: 'Internal server error' })
   }
 }
