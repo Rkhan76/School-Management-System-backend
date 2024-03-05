@@ -4,6 +4,8 @@ const { httpStatusCode } = require('../constant/httpStatusCode')
 
 async function handleStudentProfilePost(req, res) {
   const body = req.body
+
+  // console.log(body)
   
   if (!body) return res.status(400).json({ error: 'Data not received' })
 
@@ -62,11 +64,12 @@ async function handleStudentProfilePost(req, res) {
         const classResult = classes(studentClass, email)
         
       } catch (error) {
-        console.error(error)
+        // console.error(error)
       }
     }
 
-    res.status(201).json({
+    // console.log(profileDetail)
+    return res.status(201).json({
       message: 'Student profile created/updated successfully',
       profileDetail,
     })
@@ -98,6 +101,8 @@ async function handleStudentProfileGet(req, res) {
 
     const { _id, createdAt, updatedAt, __v, ...filteredProfile } =
       studentProfile.toObject()
+
+      // console.log(studentProfile)
 
     return res.status(200).json({
       success: true,
