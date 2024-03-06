@@ -68,11 +68,8 @@ async function handleStudentProfilePost(req, res) {
       }
     }
 
-    // console.log(profileDetail)
-    return res.status(201).json({
-      message: 'Student profile created/updated successfully',
-      profileDetail,
-    })
+    console.log(profileDetail)
+    return res.status(201).json({ message: 'Student profile created/updated successfully' })
   } catch (error) {
     console.error('Error creating/updating student profile:', error)
     res.status(500).json({ error: 'Internal server error' })
