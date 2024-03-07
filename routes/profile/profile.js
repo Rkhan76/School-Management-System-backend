@@ -1,5 +1,5 @@
 const express = require('express')
-const { handleStudentProfilePost, handleStudentProfileGet } = require('../../controllers/studentProfile')
+const { handleStudentProfilePost, handleStudentProfileGet, handleGetStudentByClass } = require('../../controllers/studentProfile')
 const {
   handleTeacherProfilePost,
   handleTeacherProfileGet,
@@ -9,6 +9,7 @@ const router = express.Router()
 
 router.post('/student', handleStudentProfilePost)
 router.get('/student', handleStudentProfileGet)
+router.get('/class', handleGetStudentByClass)
 
 
 router.post('/teacher', handleTeacherProfilePost)

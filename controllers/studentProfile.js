@@ -61,7 +61,7 @@ async function handleStudentProfilePost(req, res) {
 
     if (studentClass) {
       try {
-        const classResult = classes(studentClass, email)
+       classes(studentClass, email)
         
       } catch (error) {
         // console.error(error)
@@ -77,7 +77,7 @@ async function handleStudentProfilePost(req, res) {
 }
 
 async function handleStudentProfileGet(req, res) {
-  const { authorization, email } = req.headers
+  const { email } = req.headers
 
   if (!email) {
     return res.status(400).json({
@@ -115,9 +115,27 @@ async function handleStudentProfileGet(req, res) {
   }
 }
 
+async function handleGetStudentByClass(req, res){
+  const selectedclass = parseInt(req.headers.selectedclass);
+
+
+  try{
+    const classData = await StudentProfile.find({
+      studentClass: selectedclass
+    })
+    
+    return res.status(201).json({ message: "class data found successfully", classData})
+
+    
+  }catch(error){
+    console.error("Error getting class data :", error)
+  }
+}
+
 
 module.exports = {
   handleStudentProfileGet,
   handleStudentProfilePost,
+  handleGetStudentByClass,
 };
 

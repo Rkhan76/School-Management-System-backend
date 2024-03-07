@@ -7,6 +7,7 @@ const profile = require('./routes/profile/profile')
 const user = require('./routes/user')
 const attendance = require('./routes/attendance/attendance')
 const assignment = require('./routes/assignment')
+// const classData = require('./routes/class')
 
 
 const app = express()
@@ -31,6 +32,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use('/profile', profile)
 app.use('/attendance',attendance)
 app.use('/assignment', assignment)
+// app.use('/class',classData)
 app.use('/', user)
 
 

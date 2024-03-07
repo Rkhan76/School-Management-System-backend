@@ -1,16 +1,15 @@
 const Class = require('../models/class')
 const StudentProfile = require('../models/profile/studentProfile')
 
+
 const classes = async (StudentClass, email) => {
   try {
     const id = await StudentProfile.findOne({ email }).select('_id')
-    console.log(id)
     
     const result = await Class.create({
       className: StudentClass,
       studentId: id,
     })
- 
 
   } catch (error) {
     console.error('Error retrieving student profile:', error)
@@ -18,9 +17,28 @@ const classes = async (StudentClass, email) => {
   }
 }
 
+// const handleClassGet = async(req, res)=>{
+//   const selectedclass = parseInt(req.headers.selectedclass);
+
+
+//   try{
+//     const classData = await Class.find({
+//       className: selectedclass
+//     })
+//     console.log(classData)
+
+//     const classTotalStudent = await StudentProfile.find()
+//   }catch(error){
+//     console.error("Error getting class data :", error)
+//   }
+// }
+
+
+
 
 module.exports = {
-    classes
+    classes,
+    
 }
 
 
