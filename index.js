@@ -39,9 +39,7 @@ app.use('/', user)
 app.get('/', (req, res) => {
   return res.send('<h1>Hello</h1>')
 })
-app.get('/class', (req, res) => {
-  return res.send('<h1>Hello</h1>')
-})
+
 
 
 
