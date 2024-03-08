@@ -3,21 +3,30 @@ const mongoose = require('mongoose')
 const studentAttendanceSchema = new mongoose.Schema({
     year: {
       type: Number,
-      require: true
-    },
-    month: {
-      type: Number,
-      require: true
+      required: true
     },
     className:{
       type: Number,
+      required: true,
+    },
+    email:{
+      type: String,
       require: true,
     },
-    studentId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "StudentProfile"
-    },
-    attendance: []
+    attendance: {
+      Jan: [],
+      Feb: [],
+      Mar: [],
+      Apr: [],
+      May: [],
+      Jun: [],
+      Jul: [],
+      Aug: [],
+      Sep: [],
+      Oct: [],
+      Nov: [],
+      Dec: [],
+    }
     
   },{ timestamps: true});
 

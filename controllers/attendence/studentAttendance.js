@@ -10,13 +10,12 @@ const StudentAttendance = require('../../models/attendance/studentAttendance')
 
     const {
       year: year,
-      month: month,
       className: className,
-      studentId: studentId,
+      email: email,
       attendance: attendance,
     } = body
 
-    if(!year || !month || !studentId || !className){
+    if(!year || !email || !className){
         return res
           .status(400)
           .json({ error: 'Missing required fields in the input data' })
@@ -24,8 +23,8 @@ const StudentAttendance = require('../../models/attendance/studentAttendance')
 
     try{
         const studentAttendance = await StudentAttendance.findOneAndUpdate(
-          { studentId },
-          { year, month, className, studentId, attendance },
+          { email },
+          { year, className, email, attendance },
           { upsert: true, new: true }
         )
 
