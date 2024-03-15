@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const studentAttendanceSchema = new mongoose.Schema({
-    : {
+    year:{
       type: Number,
       required: true
     },
@@ -26,7 +26,7 @@ const studentAttendanceSchema = new mongoose.Schema({
       10: [],
       11: [],
       12: [],
-    }year
+    }
     
   },{ timestamps: true});
 
