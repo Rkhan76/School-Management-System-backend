@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const studentAttendanceSchema = new mongoose.Schema({
-    year: {
+    : {
       type: Number,
       required: true
     },
@@ -14,19 +14,19 @@ const studentAttendanceSchema = new mongoose.Schema({
       require: true,
     },
     attendance: {
-      Jan: [],
-      Feb: [],
-      Mar: [],
-      Apr: [],
-      May: [],
-      Jun: [],
-      Jul: [],
-      Aug: [],
-      Sep: [],
-      Oct: [],
-      Nov: [],
-      Dec: [],
-    }
+      1: [],
+      2: [],
+      3: [],
+      4: [],
+      5: [],
+      6: [],
+      7: [],
+      8: [],
+      9: [],
+      10: [],
+      11: [],
+      12: [],
+    }year
     
   },{ timestamps: true});
 

@@ -112,9 +112,15 @@ const StudentAttendance = require('../../models/attendance/studentAttendance')
 
 
 async function handleStudentAttendanceGet(req, res) {
-  const { year, month, className, studentId } = req.body
+  console.log(req.headers.year)
+  console.log(req.headers.studentemail)
+  
+  
+  let { year, studentemail } = req.headers
+  year = parseInt(year)
 
-  if (!year && !month && !className && !studentId) {
+
+  if (!year && !studentemail) {
     return res
       .status(400)
       .json({ error: 'Please provide at least one of the required fields' })
@@ -122,10 +128,11 @@ async function handleStudentAttendanceGet(req, res) {
 
   let query = { year }
 
-  if (month) query.month = month
-  if (className) query.className = className
-  if (studentId) query.studentId = studentId
+ 
+  // if (className) query.className = className
+  if (studentemail) query.email = studentemail
 
+  console.log(query)
   try {
     const attendanceRecords = await StudentAttendance.find(query)
     if (attendanceRecords.length === 0) {
@@ -135,7 +142,9 @@ async function handleStudentAttendanceGet(req, res) {
           error: 'No attendance records found for the specified criteria',
         })
     }
+    //  console.log(attendanceRecords)
     return res.status(200).json({ attendance: attendanceRecords })
+    
   } catch (error) {
     console.error('Error fetching attendance records:', error)
     return res.status(500).json({ error: 'Internal server error' })
@@ -147,9 +156,3 @@ module.exports = {
   handleStudentAttendancePost,
 }
 
-
-
-  module.exports = {
-    handleStudentAttendanceGet,
-    handleStudentAttendancePost,
-  }
