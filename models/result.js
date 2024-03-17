@@ -1,39 +1,41 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
-// const studentAttendanceSchema = new mongoose.Schema({
-//     studentId: {
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: 'Student' // Assuming you have a Student model
-//     },
-//     attendance: {
-//         type: String, // You can change this according to your requirements
-//         enum: ['present', 'absent', 'late'] // Example attendance statuses
-//     }
-// });
+const resultSchema = new mongoose.Schema({
+  year: {
+    type: Number,
+    require: true,
+  },
+  email: {
+    type: Number,
+    require: true,
+    unique: true,
+  },
+  studentClass: {
+    type: Number,
+    require: true,
+  },
+  result: [
+    {
+      subjectName: {
+        type: String,
+        required: true,
+      },
+      subjectCode: {
+        type: String,
+        required: true,
+      },
+      internalMarks: {
+        type: Number,
+        required: true,
+      },
+      totalInternalMarks: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
+})
 
-// const classSchema = new mongoose.Schema({
-//     classNumber: Number,
-//     attendance: [studentAttendanceSchema] // Array of student attendance
-// });
+const StudentResult = mongoose.Model('studentResult', resultSchema)
 
-// const yearSchema = new mongoose.Schema({
-//     year: String, // You caan change this according to your requirements
-//     classes: [classSchema] // Array of classes for each year
-// });
-
-const YearlyAttendance = mongoose.model("YearlyAttendance", yearSchema);
-
-// const yearSchema = new mongoose({
-//   year: Date.year(),
-//   class: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: "Class"
-//   }
-// });
-
-
-
-module.exports = {
-    Class,
-
-}
+module.exports = StudentResult
