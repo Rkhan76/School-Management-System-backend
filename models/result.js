@@ -32,6 +32,14 @@ const resultSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
+      externalMarks: {
+        type: Number,
+        required: true,
+      },
+      totalExternalMarks: {
+        type: Number,
+        required: true,
+      },
     },
   ],
 })
