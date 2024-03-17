@@ -6,7 +6,7 @@ const resultSchema = new mongoose.Schema({
     require: true,
   },
   email: {
-    type: Number,
+    type: String,
     require: true,
     unique: true,
   },
@@ -36,6 +36,6 @@ const resultSchema = new mongoose.Schema({
   ],
 })
 
-const StudentResult = mongoose.Model('studentResult', resultSchema)
+const Result = mongoose.model('result', resultSchema)
 
-module.exports = StudentResult
+module.exports = Result
