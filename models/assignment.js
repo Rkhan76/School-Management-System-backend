@@ -22,6 +22,10 @@ const assignmentSchema = new mongoose.Schema(
       type: Number,
       require: true
     },
+    year: {
+      type: Number,
+      require: true
+    },
     assignmentCode: {
       type: String,
       unique: true,
@@ -31,31 +35,35 @@ const assignmentSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    // submission: [
-    //   {
-    //     studentid: {
-    //       type: mongoose.Schema.Types.ObjectId,
-    //       ref: 'Student',
-    //     },
-    //     submission: {
-    //       type: String,
-    //       default: null,
-    //     },
-    //     submittedAt: {
-    //       type: Date, // Date type for submission timestamp
-    //       default: Date.now, // Set the default value to the current timestamp
-    //     },
-    //     status: {
-    //       type: String,
-    //       enum: ['assigned', 'submitted', 'late', 'graded'],
-    //       default: 'assigned',
-    //     },
-    //   },
-    // ],
+    submission: [
+      {
+        studentEmail: {
+          type: String,
+          require: true
+        },
+        studentName :{
+          type: String,
+          require: true
+        },
+        submission: {
+          type: Boolean,
+          default: null,
+        },
+        submittedAt: {
+          type: Date, // Date type for submission timestamp
+          default: Date.now, // Set the default value to the current timestamp
+        },
+        status: {
+          type: String,
+          enum: ['assigned', 'submitted', 'late', 'graded'],
+          default: 'assigned',
+        },
+      },
+    ],
   },
   { timestamps: true }
-) // Place the timestamps option here
+) 
 
-const Assignment = mongoose.model('Assignment', assignmentSchema)
+const Assignment = mongoose.model('assignment', assignmentSchema)
 
 module.exports = Assignment

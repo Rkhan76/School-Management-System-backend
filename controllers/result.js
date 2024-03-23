@@ -29,19 +29,30 @@ const handleStudentResultPost = async (req, res) => {
 }
 
 const handleStudentResultGet = async (req, res) => {
-  const { year, email, studentClass } = req.body
+  console.log(req.headers)
+  const {year, studentemail } = req.headers // corrected variable name to studentclass
+  // console.table(year, studentemail, studentclass)
 
-    if (!email) {
-      return res.status(400).json({ msg: 'Please provide student email' })
-    }
+  // console.log(year)
+  // console.log(typeof year)
+  // console.log(studentemail)
+  // console.log(typeof studentemail)
+  // console.log(studentclass)
+  // console.log(typeof studentclass)
 
-    const query = { email }
-    if(year) query.year = year
-    if(studentClass) query.studentClass = studentClass
+  if (!studentemail) {
+    return res.status(400).json({ msg: 'Please provide student email' })
+  }
 
+  const query = { email: studentemail }
+  if (year) query.year = year
+  // if (studentclass) query.studentClass = studentclass // corrected variable name to studentclass
+  console.log(query)
 
   try {
-    const result = await Result.findOne(query)
+    const result = await Result.find(query)
+
+    console.log(result)
 
     return res.status(200).json({
       message: 'Find student result successfully',
@@ -52,6 +63,7 @@ const handleStudentResultGet = async (req, res) => {
     return res.status(500).json({ error: 'Internal Server Error' })
   }
 }
+
 
 module.exports = {
   handleStudentResultPost,
